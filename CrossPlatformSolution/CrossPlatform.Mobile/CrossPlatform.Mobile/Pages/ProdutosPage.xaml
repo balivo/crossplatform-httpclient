@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrossPlatform.Mobile.Pages.ProdutosPage"
+             Title="Produtos">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      Icon="ic_add.png"
+      Order="Primary"
+      Priority="0"
+      Command="{Binding NovoCommand}" />
+    <ToolbarItem
+      Icon="ic_auth.png"
+      Order="Primary"
+      Priority="0"
+      Command="{Binding AutenticarHttpCommand}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand">
+      <ListView
+        ItemsSource="{Binding Produtos}"
+        HasUnevenRows="True"
+        ItemTapped="Handle_ItemTapped"
+        ItemSelected="Handle_ItemSelected"
+        RefreshCommand="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsBusy}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell
+              Text="{Binding Nome}"
+              Detail="{Binding Descricao}" />
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
